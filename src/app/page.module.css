@@ -81,6 +81,7 @@
 .restaurants h2 {
   margin-bottom: 2rem;
   font-size: 1.5rem;
+  margin-left: 1rem;
 }
 
 .restaurantGrid {
@@ -91,8 +92,7 @@
 }
 
 .restaurantCard {
-  width: 25vw;
-  height: 30vh;
+  overflow: hidden; 
   border-radius: 15px;
   background: white;
   display:flex;
@@ -101,12 +101,20 @@
 }
 
 .imgCard {
-  border-radius: 15px;
-  margin-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     
+}
+
+.imgCardContainer {
+  width: 100%;           
+  height: 200px;       
 }
 
 .textCard {
   margin-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .iconCard {
@@ -115,7 +123,8 @@
 
 .flexCard {
   display:flex;
- justify-content: space-between;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer {

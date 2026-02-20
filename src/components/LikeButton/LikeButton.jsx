@@ -1,15 +1,30 @@
 'use client';
+import { useState, useEffect } from 'react';
 
-import { useState } from 'react';
-
-export default function LikeButton () {
+export default function LikeButton ({rest_id}) {
   const [isLiked, setIsLiked] = useState(false);
 
+   useEffect(() => {
+    const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+    setIsLiked(likes.includes(rest_id));
+  }, [rest_id]);
+
+  const toggleLike = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+    const updatedLikes = isLiked
+      ? likes.filter(id => id !== rest_id)
+      : [...likes, rest_id];
+    localStorage.setItem('likes', JSON.stringify(updatedLikes));
+    setIsLiked(!isLiked);
+  };
+
   return (
-    <div className="restaurantHeader">
+    <div>
       <button 
         className={`favoriteButton ${isLiked ? 'liked' : ''}`}
-        onClick={() => setIsLiked(!isLiked)}
+        onClick={toggleLike}
         aria-label={isLiked ? "Retirer des favoris" : "Ajouter aux favoris"}
       >
         <svg 
