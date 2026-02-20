@@ -90,6 +90,34 @@
   justify-content: center;
 }
 
+.restaurantCard {
+  width: 25vw;
+  height: 30vh;
+  border-radius: 15px;
+  background: white;
+  display:flex;
+  flex-direction: column;
+
+}
+
+.imgCard {
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.textCard {
+  margin-left: 1rem;
+}
+
+.iconCard {
+  margin-right: 1rem;
+}
+
+.flexCard {
+  display:flex;
+ justify-content: space-between;
+}
+
 .footer {
   background: #353535;
   color: white;

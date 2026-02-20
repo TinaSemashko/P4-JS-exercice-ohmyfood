@@ -1,10 +1,14 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Steps from "@/components/Steps/Steps";
+import RestaurantCard from "@/components/RestaurantCard/RestaurantCard";
+import data from "@/data/restaurants.json";
+const { restaurants } = data;
 
 
 
 export default function Home() {
+  console.log(restaurants)
   return (
     <>
       <div className={styles.location}>
@@ -22,11 +26,11 @@ export default function Home() {
 
       <Steps />
 
-      <section className={styles.restaurants}>
+      <section className={styles.restaurants} >
         <div className={styles.restaurantsContent}>
           <h2>Restaurants</h2>
-          <div className={styles.restaurantGrid}>
-            
+          <div className={styles.restaurantGrid} >
+            {restaurants.map((rest)=>(<RestaurantCard key={rest.id} data_rest={rest}/>))}
           </div>
         </div>
       </section>
