@@ -1,14 +1,20 @@
 import RestaurantHeader from "@/components/RestaurantHeader/RestaurantHeader";
 import MenuItem from "@/components/MenuItem/MenuItem";
 import data from "@/data/restaurants.json";
+import { notFound } from "next/navigation";
 
 export default function RestaurantPage({ params }) {
   const restaurant = data.restaurants.find(r => r.slug === params.slug);
 
+  if (!restaurant) {
+    notFound();
+  }
+        
   return (
     <>
-      <div className="heroImage">
-        <img src={restaurant.image} className="image" alt={restaurant.name} />
+
+    <div className="heroImage">
+        <img src={restaurant?.image} className="image" alt={restaurant.name} />
       </div>
 
       <div className="mainWrapper">
@@ -39,6 +45,8 @@ export default function RestaurantPage({ params }) {
           <button className="orderButton">Commander</button>
         </div>
       </div>
+
     </>
-  );
+  )
+
 }
